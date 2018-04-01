@@ -1,2 +1,2 @@
-# Macroeconom-a-I
+﻿# Macroeconomia I
 Presentaciones, apuntes y códigos empleados en la asignatura
