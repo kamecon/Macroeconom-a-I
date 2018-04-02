@@ -90,7 +90,7 @@ oferta_trabajo <- function(w, tl,  gamma.l = 0.5){
 }
 
 produccion <- function(N, alfa  = 2/3,  K = 400,   A = 1){
-  # Calcula la oferta de trabajo
+  # Calcula la prouduccion
   #
   # Args:
   #   N: empleo que vacia el mercado de trabajo
