@@ -54,21 +54,21 @@ end
 subplot(2,2,1)
 plot(t,Tabla(:,4))
 grid on
-   xlabel('Impuesto')
-   ylabel('Recaudacion')
+   %xlabel('Impuesto')
+   title('Recaudacion')
 subplot(2,2,2)
 plot(t,Tabla(:,3))
 grid on
-   xlabel('Impuesto')
-   ylabel('Empleo')
+   %xlabel('Impuesto')
+   title('Empleo')
 subplot(2,2,3)
 plot(t,Tabla(:,5))
 grid on
    xlabel('Impuesto')
-   ylabel('Produccion')
+   title('Produccion')
 subplot(2,2,4)
 plot(t,Tabla(:,2))
 grid on
    xlabel('Impuesto')
-   ylabel('Salario')
+   title('Salario')
 suptitle('Curva de Laffer - Impuesto al Trabajo')
