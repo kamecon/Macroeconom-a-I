@@ -56,7 +56,7 @@ demanda_trabajo <- function(w, alfa  = 2/3,  K = 400,   A = 1){
   #
   # Args:
   #   w: salario
-  #   alfa: participacion del capital en la funcion de produccion (default=2/3)
+  #   alfa: participacion del trabajo en la funcion de produccion (default=2/3)
   #   K: stock de capital (default=400)
   #   A: productividad total de los factores TFP (default=1)
   #
@@ -94,7 +94,7 @@ produccion <- function(N, alfa  = 2/3,  K = 400,   A = 1){
   #
   # Args:
   #   N: empleo que vacia el mercado de trabajo
-  #   alfa: participacion del capital en la funcion de produccion (default=2/3)
+  #   alfa: participacion del trabajo en la funcion de produccion (default=2/3)
   #   K: stock de capital (default=400)
   #   A: productividad total de los factores TFP (default=1)
   #
