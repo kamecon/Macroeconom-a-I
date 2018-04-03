@@ -14,7 +14,7 @@
 % viene dada por (alfa*A/w)^3K
 
 %Parametros
-alfa  = 2/3;  %participación del trabajo en la función de producción
+alfa  = 1/3;  %participación del capital en la función de producción
 K = 400;      %Stock de capital
 A = 1;        %Productividad total de los factores TFP
 gammal = 0.5; %Elasticidad de sustitución
@@ -24,7 +24,7 @@ gammal = 0.5; %Elasticidad de sustitución
 %Función de producción
 Y = @(alfa,A,K,N) ( A*(K^alfa)*(N^(1-alfa)) ); 
 %Demanda de Trabajo
-DT = @(alfa,A,w,K) ( ((alfa*(A/w))^3)*K );  
+DT = @(alfa,A,w,K) ( (((1-alfa)*(A/w))^3)*K );  
 %Oferta de Trabajo
 OT = @(tl,w,gammal) ( ((1-tl)*w)^(gammal/(1-gammal)) );  
 %Exceso de demanda
@@ -54,12 +54,10 @@ end
 subplot(2,2,1)
 plot(t,Tabla(:,4))
 grid on
-   %xlabel('Impuesto')
    title('Recaudacion')
 subplot(2,2,2)
 plot(t,Tabla(:,3))
 grid on
-   %xlabel('Impuesto')
    title('Empleo')
 subplot(2,2,3)
 plot(t,Tabla(:,5))

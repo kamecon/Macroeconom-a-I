@@ -24,14 +24,14 @@ pacman::p_load(ggplot2, reshape2)
 
 
 #Función para encontrar el salario de equilibrio
-f1 <- function(w, tl, alfa  = 2/3,  K = 400,   A = 1,   gamma.l = 0.5){
+f1 <- function(w, tl, alfa  = 1/3,  K = 400,   A = 1,   gamma.l = 0.5){
   # Calcula el exceso de demanda del mercado de trabajo
   # necesario para encontrar el salrio de equilibrio
   #
   # Args:
   #   w: salario
   #   tl: impuesto al trabajo
-  #   alfa: participacion del capital en la funcion de produccion (default=2/3)
+  #   alfa: participacion del capital en la funcion de produccion (default=1/3)
   #   K: stock de capital (default=400)
   #   A: productividad total de los factores TFP (default=1)
   #   gamma.l: elasticidad de sustitucion del consumo (default=0.5)
@@ -51,12 +51,12 @@ f1 <- function(w, tl, alfa  = 2/3,  K = 400,   A = 1,   gamma.l = 0.5){
   
 } 
 
-demanda_trabajo <- function(w, alfa  = 2/3,  K = 400,   A = 1){
+demanda_trabajo <- function(w, alfa  = 1/3,  K = 400,   A = 1){
   # Calcula la demanda de trabajo
   #
   # Args:
   #   w: salario
-  #   alfa: participacion del trabajo en la funcion de produccion (default=2/3)
+  #   alfa: participacion del trabajo en la funcion de produccion (default=1/3)
   #   K: stock de capital (default=400)
   #   A: productividad total de los factores TFP (default=1)
   #
@@ -70,7 +70,7 @@ demanda_trabajo <- function(w, alfa  = 2/3,  K = 400,   A = 1){
     stop(" 'alfa' debe ser un numero entre cero y uno", call. = FALSE)
   }
   
-  dl <- ((alfa*(A/w))^3)*K
+  dl <- (((1-alfa)*(A/w))^3)*K
 }
 
 oferta_trabajo <- function(w, tl,  gamma.l = 0.5){
@@ -89,12 +89,12 @@ oferta_trabajo <- function(w, tl,  gamma.l = 0.5){
   ol <- ((1-tl)*w)^(gamma.l/(1-gamma.l))
 }
 
-produccion <- function(N, alfa  = 2/3,  K = 400,   A = 1){
+produccion <- function(N, alfa  = 1/3,  K = 400,   A = 1){
   # Calcula la produccion
   #
   # Args:
   #   N: empleo que vacia el mercado de trabajo
-  #   alfa: participacion del trabajo en la funcion de produccion (default=2/3)
+  #   alfa: participacion del trabajo en la funcion de produccion (default=1/3)
   #   K: stock de capital (default=400)
   #   A: productividad total de los factores TFP (default=1)
   #
