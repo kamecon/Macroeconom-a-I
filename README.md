@@ -12,4 +12,4 @@ En esta carpeta encontrarás (de momento):
 * Un R Markdown `LafferMarkdown.Rmd` y su correspondiente .html donde se explica con detalle la obtención de la curva de Laffer. Pueden ver una versión publicada del html [acá](http://rpubs.com/Kamecon/Laffer)
 * Notebook python `laffer_curve_python.ipynb` que reproduce el código original de `LafferCurve.R` en Python con texto explicativo.
 * Notebook R `laffer_curve_r.ipynb` que reproduce el código original de `LafferCurve.R` en R con texto explicativo.
-* Una versión del código en matlab `Laffer.m`, un script para la versión *publish* `LafferPub.m`y su correspondiente html LafferPub.html`
+* Una versión del código en matlab `Laffer.m`, un script para la versión *publish* `LafferPub.m`y su correspondiente html `LafferPub.html`
