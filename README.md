@@ -13,3 +13,11 @@ En esta carpeta encontrarás (de momento):
 * Notebook python `laffer_curve_python.ipynb` que reproduce el código original de `LafferCurve.R` en Python con texto explicativo.
 * Notebook R `laffer_curve_r.ipynb` que reproduce el código original de `LafferCurve.R` en R con texto explicativo.
 * Una versión del código en matlab `Laffer.m`, un script para la versión *publish* `LafferPub.m`y su correspondiente html `LafferPub.html`
+
+### ShinyEuro
+
+En esta carpeta podran encontrar los shinys que uso en la asignatura, los cuales acceden a eurostat y descargan datos económicos. De momento tenemos:
+
+* Un shiny que muestra un gráfico y una tabla con datos de finanzas públicas (gasto, ingreso y saldo fiscal), los cuales pueden ser descargados en un pdf.
+
+* otro que realiza lo mismo con datos de empleo (en revisión, aún sin subir)
