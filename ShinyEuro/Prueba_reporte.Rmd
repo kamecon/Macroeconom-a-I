@@ -16,10 +16,11 @@ library(kableExtra)
 
 
 ```{r, echo=FALSE, as.is=TRUE, message=FALSE, warning=FALSE, fig.height = 5, fig.width = 8, fig.align = "center"}
-      plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo))
-      plot <- plot + geom_point() + geom_line()
-      plot <- plot + coord_cartesian(xlim=c(2005:2015))
-      plot <- plot + labs(x="Ano", y=toString(input$variable))
+     plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo)) +
+              geom_point() + geom_line() +
+              coord_cartesian(xlim=c(2005:2017)) +
+              labs(x="Ano", y=toString(input$variable)) +
+              scale_x_continuous(breaks = c(2005,2007,2009,2011,2013,2015,2017))
       plot
 ```
 

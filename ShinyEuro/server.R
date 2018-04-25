@@ -11,6 +11,7 @@ clean_eurostat_cache()
 dat <- get_eurostat("gov_10a_main", time_format = "raw")
 
 
+
 euro_gov <- function(dat,
                      variable,
                      country){
@@ -19,6 +20,7 @@ euro_gov <- function(dat,
   
   # convert time column from Date to numeric
   dat$time <- eurotime2num(dat$time)
+  
   
   #Seleccionamos los datos que nos interesan y los ordenamos por país y año
   
@@ -43,17 +45,18 @@ shinyServer(
     
     output$grafico <- renderPlot({
       datos <- resultados()
-      plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo))
-      plot <- plot + geom_point() + geom_line()
-      plot <- plot + coord_cartesian(xlim=c(2005:2015))
-      plot <- plot + labs(x="Año", y=toString(input$variable))
+      plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo)) +
+              geom_point() + geom_line() +
+              coord_cartesian(xlim=c(2005:2017)) +
+              labs(x="Año", y=toString(input$variable)) +
+              scale_x_continuous(breaks = c(2005,2007,2009,2011,2013,2015,2017))
       plot
     })
     
     output$tabla <- renderTable({
       datos <- resultados()
       
-      # Seleccionamos las columnas que nos interesan (país, año y valores de la variable), agrupamos por pa?s y calculamos las variaciones porcentuales. Finalmente nos quedamos solo con los años 2005 en adelante 
+      # Seleccionamos las columnas que nos interesan (país, año y valores de la variable), agrupamos por país y calculamos las variaciones porcentuales. Finalmente nos quedamos solo con los años 2005 en adelante 
       datos %>% dplyr::select(geo, time, values) %>%
         dplyr::group_by(geo) %>%
         dplyr::mutate(var_porct = (values/lag(values) -1)*100) %>%
