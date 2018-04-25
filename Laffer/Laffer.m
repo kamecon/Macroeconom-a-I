@@ -27,10 +27,9 @@ Y = @(alfa,A,K,N) ( A*(K^alfa)*(N^(1-alfa)) );
 DT = @(alfa,A,w,K) ( (((1-alfa)*(A/w))^3)*K );  
 %Oferta de Trabajo
 OT = @(tl,w,gammal) ( ((1-tl)*w)^(gammal/(1-gammal)) );  
-%Exceso de demanda
+%Exceso de demanda. Posteriormente pasamos esta función a un solver
+%no lineal para encontrar el salario de equilibrio
 EDt = @(alfa,A,w,K,tl,gammal) (DT(alfa,A,w,K) - OT(tl,w,gammal)); 
-%Definimos el exceso de demanda como función solo del salario
-%ED = @(w) EDt(alfa,A,w,K,tl,gammal); 
 
 %Vector de impuestos
 t = 0.00:0.01:0.99;
