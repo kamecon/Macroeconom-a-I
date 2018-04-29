@@ -65,7 +65,7 @@ inst <- match(PAQUETES, .packages(all=TRUE))
 need <- which(is.na(inst))
 if (length(need) > 0) install.packages(PAQUETES[need])
 
-pacman::p_load(ggplot2, reshape2)
+pacman::p_load(ggplot2, reshape2, shiny)
 ```
 
 
@@ -293,6 +293,3 @@ lf <- ggplot(data = tabla.flat, aes(x=Impuesto, y=value)) +
   theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
 lf
 ```
-
-
-

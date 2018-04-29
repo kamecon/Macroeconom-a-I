@@ -166,7 +166,7 @@ inst &lt;- match(PAQUETES, .packages(all=TRUE))
 need &lt;- which(is.na(inst))
 if (length(need) &gt; 0) install.packages(PAQUETES[need])
 
-pacman::p_load(ggplot2, reshape2)</code></pre>
+pacman::p_load(ggplot2, reshape2, shiny)</code></pre>
 <div id="funciones" class="section level2">
 <h2><span class="header-section-number">2.1</span> Funciones</h2>
 <p>Primero definimos una serie de funciones necesarias para el cálculo</p>
