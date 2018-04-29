@@ -1,0 +1,374 @@
+---
+title: "Curva de Laffer: Una introducción con R"
+author: "Kamal Romero"
+date: "Abril de 2018"
+runtime: shiny
+output: 
+  html_document:
+    fig_height: 5
+    fig_width: 7
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+---
+
+A cotinuación se deriva una curva de Laffer para un impuesto al trabajo. Partimos de un mercado de trabajo clásico muy básico. 
+
+# Entorno
+
+Del lado de la demanda empleamos una función Cobb-Douglas estándar
+
+$Y=AK^{\frac{1}{3}}N^{\frac{2}{3}}$
+
+obteniendo una demanda de trabajo convencional
+
+$DN=\bigg(\frac{2}{3}\frac{A}{w}\bigg)^3K$
+
+Del lado de la oferta usamos una función de utilidad simple
+
+$U=\frac{c^\gamma}{\gamma}-N$
+
+sujeta a la restricción de presupuesto
+
+$C=(1-\tau_l)wN$
+
+a partir de la cual se obtiene la siguiente función de oferta de trabajo
+
+$ON=[(1-\tau_l)w]^{(\frac{\gamma}{1-\gamma})}$
+
+Un incremento en el impuesto al trabajo $\tau_l$ reduce la oferta de trabajo y por ende, la producción de la economía.
+
+
+Para determinar el salario y empelo de equilibrio igualamos oferta y demanda
+
+$\bigg(\frac{2}{3}\frac{A}{w}\bigg)^3K=[(1-\tau_l)w]^{\frac{\gamma}{1-\gamma}}$
+
+Asumiendo que $\gamma=0,5$ el salario de equilibrio viene dado por
+
+$w=\bigg[ \bigg(\frac{2}{3}A\bigg)^3\frac{K}{1-\tau_l} \bigg]^{\frac{1}{4}}$
+
+Al aumentar el impuesto al trabajo $\tau_l$ cae la oferta de trabajo y sube el salario de equilibrio a la vez que disminuye el nivel de empleo.
+
+
+La recaudación viene dada por el tipo impositivo $\tau_l$ multiplicado por el total de rentas salariales $W\times N$
+
+$\tau_l \times W \times N$
+
+# Construyendo una Curva de Laffer
+
+Asignamos valores a $A=1$ y $K=400$ en la expresión \ref{w}, y calculamos la recaudación para cada tipo $\tau$
+
+Cargamos los paquetes necesarios
+
+```{r message=FALSE, warning=FALSE}
+PAQUETES <- c("pacman")
+inst <- match(PAQUETES, .packages(all=TRUE))
+need <- which(is.na(inst))
+if (length(need) > 0) install.packages(PAQUETES[need])
+
+pacman::p_load(ggplot2, reshape2, shiny)
+```
+
+
+## Funciones
+
+Primero definimos una serie de funciones necesarias para el cálculo
+
+Función que define el exceso de demanda en el mercado de trabajo. Posteriormente pasamos esta función a un solver no lineal para encontrar el salario de equilibrio
+
+```{r exceso demanda}
+f1 <- function(w, tl, alfa  = 1/3,  K = 400,   A = 1,   gamma.l = 0.5){
+  # Calcula el exceso de demanda del mercado de trabajo
+  # necesario para encontrar el salrio de equilibrio
+  #
+  # Args:
+  #   w: salario
+  #   tl: impuesto al trabajo
+  #   alfa: participacion del capital en la funcion de produccion (default=1/3)
+  #   K: stock de capital (default=400)
+  #   A: productividad total de los factores TFP (default=1)
+  #   gamma.l: elasticidad de sustitucion del consumo (default=0.5)
+  #
+  # Returns:
+  #   ed: El exceso de demanda en el mercado de trabajo definido como
+  #   la  diferencia entre demanda y oferta de trabajo
+  
+  # Consideramos solo funciones de produccion con rendimientos
+  # constantes a escala
+    if (alfa > 1 | alfa < 0) {
+    stop(" 'alfa' debe ser un numero entre cero y uno", call. = FALSE)
+  }
+  
+  #Exceso de demanda
+  ed <- (demanda_trabajo(w, alfa, K, A)-oferta_trabajo(w, tl, gamma.l))
+  
+} 
+
+```
+
+Función de demanda
+
+```{r demanda}
+
+demanda_trabajo <- function(w, alfa  = 1/3,  K = 400,   A = 1){
+  # Calcula la demanda de trabajo
+  #
+  # Args:
+  #   w: salario
+  #   alfa: participacion del capital en la funcion de produccion (default=1/3)
+  #   K: stock de capital (default=400)
+  #   A: productividad total de los factores TFP (default=1)
+  #
+  # Returns:
+  #   dl: Demanda de trabajo obtenida a partir de una funcion de
+  #   produccion Cobb-Douglas
+  
+  # Consideramos solo funciones de produccion con rendimientos
+  # constantes a escala
+  if (alfa > 1 | alfa < 0) {
+    stop(" 'alfa' debe ser un numero entre cero y uno", call. = FALSE)
+  }
+  
+  dl <- (((1-alfa)*(A/w))^3)*K
+}
+
+```
+
+Función de oferta
+
+```{r oferta}
+
+oferta_trabajo <- function(w, tl,  gamma.l = 0.5){
+  # Calcula la oferta de trabajo
+  #
+  # Args:
+  #   w: salario
+  #   tl: impuesto al trabajo
+  #   gamma.l: elasticidad de sustitucion del consumo (default=0.5)
+  #
+  # Returns:
+  #   ol: Oferta de trabajo obtenidad a partir de una funcion de
+  #   utilidad U=c^gamma/gamma-N sujeta a una restricción de
+  #   presupuesto igual a C=(1-t_l)wN
+  
+  ol <- ((1-tl)*w)^(gamma.l/(1-gamma.l))
+}
+
+```
+
+Función de producción
+
+```{r produccion}
+
+produccion <- function(N, alfa  = 1/3,  K = 400,   A = 1){
+  # Calcula la produccion
+  #
+  # Args:
+  #   N: empleo que vacia el mercado de trabajo
+  #   alfa: participacion del capital en la funcion de produccion (default=1/3)
+  #   K: stock de capital (default=400)
+  #   A: productividad total de los factores TFP (default=1)
+  #
+  # Returns:
+  #   y: nivel de produccion obtenida a partir de una funcion de
+  #   produccion Cobb-Douglas
+  
+  # Consideramos solo funciones con rendimientos constantes a escala
+  if (alfa > 1 | alfa < 0) {
+    stop(" 'alfa' debe ser un numero entre cero y uno", call. = FALSE)
+  }
+  
+  y <- A*K^alfa*N^(1-alfa)
+}
+
+```
+
+## Construcción del data frame con los datos
+
+Definimos una matriz inicial a ser rellenada
+
+```{r matriz}
+tabla <- matrix(ncol = 5, nrow = length(seq(0,0.99,0.01)))
+```
+
+Hacemos un bucle que genera los datos de recaudación, empleo, salario y producción para cada tipo t
+
+```{r bucle}
+contador <- 1
+for(i in seq(0,0.99,0.01)){
+  tabla[contador,1] <- i
+  w <- uniroot(f1,c(0.1,20),tl=i)$root
+  tabla[contador,2] <- w
+  N <- demanda_trabajo(w)
+  tabla[contador,3] <- N
+  R <- i*w*N
+  tabla[contador,4] <- R
+  Y <- produccion(N)
+  tabla[contador,5] <- Y
+  contador <- contador + 1	
+}
+
+```
+
+Convertimos la matriz a data frame  y nombramos las columnas
+
+```{r data frame}
+tabla.1 <- data.frame(tabla)
+
+colnames(tabla.1) <- c('Impuesto','Salario','Empleo','Recaudacion','Produccion')
+```
+
+## Gráficos
+
+Realizamos un grupo de gráficos. Primero el gráfico de la Curva de Laffer
+
+```{r graf Laffer}
+l1 <- ggplot(data = tabla.1, aes(x=Impuesto,y=Recaudacion)) +
+  geom_line(col="red") +
+  ggtitle("Curva de Laffer - Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+l1
+```
+
+Se aprecia la relación no monótona que caracteriza a dicha relación, la recaudación incrementa con el tipo hasta cierto punto a partir del cual desciende.
+
+A nivel general la recaudación $T$ se define como el tipo $\tau$ multiplicado por la base impositiva $B(\tau)$ la cual depende del tipo.
+
+$T = \tau \times B(\tau)$
+
+Al subir el tipo disminuye la base, por lo que tenemos dos efectos en direcciones contrarias
+
+Según nuestra definición de recaudación $(\tau_l \times W \times N)$, tenemos tres fuerzas operando, sabemos que cuando sube el tipo disminuye la oferta de trabajo, manteniendo todo lo demás constante sube el salario y disminuye el nivel de empleo. Veamos el comportamiento de cada concepto
+
+```{r graf empleo}
+l2 <- ggplot(data = tabla.1, aes(x=Impuesto,y=Empleo)) +
+  geom_line(col="blue") +
+  ggtitle("Empleo e Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+l2
+```
+
+En el gráfico anterior se observa como el empleo se reduce ante un impuesto al trabajo. Veamos a continuación como se comporta el salario
+
+```{r graf salario}
+l3 <- ggplot(data = tabla.1, aes(x=Impuesto,y=Salario)) +
+  geom_line(col="green") +
+  ggtitle("Salario e Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+l3
+```
+
+Como era de esperar aumenta el salario, se observa como para valores muy altos del impuesto la tasa a la que aumenta el salario se acelera notablemente.
+
+Dada la caída del empleo manteniendo el capital constante, la producción desciende como se observa en el siguiente gráfico
+
+```{r graf produccion}
+l4 <- ggplot(data = tabla.1, aes(x=Impuesto,y=Produccion)) +
+  geom_line() +
+  ggtitle("Curva de Laffer - Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+l4
+```
+
+Mostramos todos los gráficos juntos, para eso hay que manipular algo el data frame de manera que la libreria `ggplot2` lo lea de manera correcta
+
+Colocamos  la tabla en formaro flat para poder hacer el facet
+
+```{r flat}
+tabla.flat <- melt(tabla.1, id.vars = c('Impuesto'))
+```
+
+Creamos un factor para que en el gráfico aparezca el facet en el orden que yo quiero, el cual viene dado por la jerarquía del factor
+
+```{r factor}
+tabla.flat$facet <- factor(tabla.flat$variable, levels = c('Recaudacion','Empleo','Produccion','Salario'))
+```
+
+Y ya estamos preparados para realizar el gráfico
+
+```{r graficos}
+lf <- ggplot(data = tabla.flat, aes(x=Impuesto, y=value)) +
+  geom_line() +
+  facet_wrap(~facet, scales = "free_y") +
+  ggtitle("Curva de Laffer - Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+lf
+```
+
+## Análisis de sensibilidad
+
+Gracias a [RobustControl](https://twitter.com/RobustControl) que nos ha realizado este detallado análisis que presentamos a continuación, podemos analizar como cambia la curva de Laffer ante variaciones del parámetro $\gamma$
+
+![](laffmax1.jpg)
+
+![](laffmax2.jpg)
+
+
+![](laffmax3.jpg)
+
+En función del resultado anterior, evaluamos como responde el máximo de la curva de Laffer ante cambios en $\gamma$. Para ello elaboramos un gráfico dinámico en `Shiny`
+
+```{r, shinygraf}
+
+inputPanel(
+  
+  sliderInput("gg", label = "Elasticidad de sustitucion:",
+              min = 0.1, max = 0.9, value = 0.5, step = 0.1)
+
+)
+
+
+tablaImp <- function(g=0.5){
+  
+  tabla2 <- matrix(ncol = 5, nrow = length(seq(0,0.99,0.01)))
+
+
+ contador <- 1
+for(i in seq(0,0.99,0.01)){
+  tabla2[contador,1] <- i
+  w <- uniroot(f1,c(0.1,50),tl=i, gamma.l = g)$root
+  tabla2[contador,2] <- w
+  N <- demanda_trabajo(w)
+  tabla2[contador,3] <- N
+  R <- i*w*N
+  tabla2[contador,4] <- R
+  Y <- produccion(N)
+  tabla2[contador,5] <- Y
+  contador <- contador + 1	
+}
+
+tabla21 <- data.frame(tabla2)
+
+colnames(tabla21) <- c('Impuesto','Salario','Empleo','Recaudacion','Produccion')
+
+return(tabla21)
+
+}
+
+
+tabla22 <- reactive({ 
+  
+  tablaImp(input$gg)
+  
+
+})
+
+
+
+renderPlot({
+  
+ggplot(data = tabla22(), aes(x=Impuesto,y=Recaudacion)) +
+  geom_line(col="red") +
+  ggtitle("Curva de Laffer - Impuesto al Trabajo") +
+  theme(plot.title = element_text(hjust = 0.5))  #Esto es para centrar el título 
+
+
+})
+
+
+
+```
+
+
+
+
