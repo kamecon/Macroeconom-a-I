@@ -1,0 +1,349 @@
+%Preamble
+%------------------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{book}
+\usepackage{amsmath}
+\usepackage[ansinew]{inputenc}
+%\usepackage[dvipdfm,dvipsnames,usenames]{color}
+\usepackage{graphicx}
+\usepackage[spanish]{babel} %para textos en español
+\usepackage{amsthm} %Para incluir teoremas
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{titlesec}
+%\usepackage{fancybox}
+%\usepackage{lscape}
+
+%------------------------------------------------------------------------------------
+%Se cambian los márgenes
+\addtolength{\textwidth}{3cm} \addtolength{\hoffset}{-2cm}
+\addtolength{\textheight}{2.5cm} \addtolength{\voffset}{-2cm}
+%------------------------------------------------------------------------------------
+%Se cambia formato del encabezado del capítulo
+%Se necesita el paquete titlesec
+%Este comando sustituye la palabra "capítulo" por el título del mismo
+\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+%Este comando elimina la numeración
+\renewcommand{\thechapter}{}
+%------------------------------------------------------------------------------------
+
+\pagestyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definicion}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{assumption}[theorem]{Supuesto}
+\newtheorem{xca}[theorem]{Ejercicio}
+
+\usepackage{fancyhdr} %Para colocar headings
+\DeclareGraphicsRule{.JPG}{eps}{*}{`jpeg2ps #1} %Para poder incluir gráficos en formato .jpg
+\pagestyle{fancy} %Para colocar headings
+\fancyhf{} %Para colocar headings
+\lhead{ Macroeconomía } %left Heading
+\chead{\includegraphics[width=20pt]{colcis.jpg}}
+\renewcommand{\headrulewidth}{0.4pt}
+\rhead{Prof. Kamal Romero} %Right Heading
+
+
+
+
+%------------------------------------------------------------------------------------
+\begin{document}
+
+%\begin{center}
+%%\begin{center}
+%%\includegraphics[height=20mm,width=80mm]{cisneros.jpg}
+%%\end{center}
+%\small{\textbf{Colegio Universitario Cardenal Cisneros}}\\
+%\small{Grado en Administración y Dirección de Empresas}\\
+%%\rule{12cm}{0.4pt}\\
+%\large{\bf{Macroeconomía}}\\
+%\small{Curso 15 - 16}\\
+%\small{Profesor: Kamal Romero}\\
+%%\rule{12cm}{0.4pt}\\
+%\end{center}
+%\smallskip
+
+\chapter{Tratamiento Analítico del Mercado de Trabajo}
+
+\fbox{ \fbox{
+\begin{minipage}[c]{\textwidth}
+
+\begin{center}
+   \textbf{ADVERTENCIA}
+\end{center}
+
+El presente material es un ``guión'' de las clases que han cubierto la parte analítica del mercado de trabajo, y la cual \textbf{NO va a ser evaluada en el examen}. El mismo no es bajo ninguna circunstancia material de estudio, \textbf{no sustituye los libros de texto} y solo puede ser considerado como un apoyo para entender que hay detrás del análisis gráfico de los textos que sirven de base al desarrollo del curso. El documento puede contener erratas, se agradece comunicar al autor en caso de identificar alguna.
+
+\end{minipage}}}
+
+
+\section*{La Empresa y la Demanda de Trabajo}
+
+
+\subsection*{Función de Producción}
+
+La función de producción Cobb-Douglas con rendimientos a escala constantes viene dada por:
+\begin{equation}\label{cb}
+    Y=F(K,N)=K^\alpha N^{1-\alpha}
+\end{equation}
+
+\noindent donde $\alpha \in [0,1]$
+
+
+Al igual que cualquier otra función de producción, nos indica como la cantidad producida del único bien de nuestra economía depende de la cantidad de capital físico y trabajo. Como se puede observar a simple vista, al aumentar la cantidad de trabajo ($N$) o capital ($K$) la cantidad producida de un bien ($Y$) se incrementa.
+
+\subsection*{Producto Marginal}
+
+A continuación definimos el producto marginal, pero antes se expone la intuición del concepto.
+
+El producto marginal de un factor nos indica en cuanto varía la producción cuando variamos dicho factor en una unidad. En el contexto de maximización de beneficios de una empresa, el concepto es importante ya que nos proporciona una ``regla'' de actuación de la empresa. Es decir, dado un nivel de producción y una determinada cantidad de factores, nos indica que ocurre con los beneficios de la empresa si desea variar el uso del factor en una unidad.
+
+Luego veremos con más detalle las propiedades de esta ``regla''.
+
+Asimismo, a pesar de que en economías reales la mayoría de los factores de producción varían de forma discreta (horas o minutos máquina-hombre, jornadas, número de bienes de equipo, etc.), es útil asumir que la única empresa de nuestro modelo macroeconómico básico puede variar de forma continua dichos factores (pasar de utilizar 1 hora de trabajo a 1,0000000000000000001 horas). Lo anterior nos permite emplear herramientas del cálculo diferencial, el cual recuerden se basa en la noción de que los cambios en las variables son infinitesimales (tan pequeños que tienden a cero $X_1 - X_2= \Delta X  \rightarrow 0$)
+
+\begin{definition}
+El \textbf{producto marginal} de un factor indica en cuanto varía la producción como respuesta a un cambio infinitesimal en dicho factor, y viene dado por la primera derivada de la función de producción con respecto al factor.
+\end{definition}
+
+Por lo tanto, el producto marginal ($PM$) vienen dado por:
+
+\begin{equation*}
+    PM_i=\frac{\partial Y}{\partial i} \;\; \forall i=K,N
+\end{equation*}
+
+Calculamos el producto marginal de cada factor:
+\begin{align}\label{yK}
+    \frac{\partial Y}{\partial K}=& \alpha K^{\alpha-1}N^{1-\alpha} \nonumber\\
+    =&\alpha K^{\alpha-1}N^{-(\alpha-1)}\nonumber\\
+    =&\alpha \frac {K^{\alpha-1}}{N^{\alpha-1}}\nonumber\\
+    =&\alpha \bigg(\frac {K}{N}\bigg)^{\alpha-1}
+\end{align}
+\begin{align}\label{yN}
+    \frac{\partial Y}{\partial N}=& (1-\alpha) N^{-\alpha}K^{\alpha} \nonumber\\
+    =& (1-\alpha) \frac{K^{\alpha}}{N^{\alpha}} \nonumber\\
+    =& (1-\alpha) \bigg(\frac{K}{N}\bigg)^{\alpha}
+\end{align}
+
+Por los momentos nos concentramos en el factor trabajo, ya que deseamos obtener la demanda de trabajo.
+
+Como se habrán percatado, las derivadas son parciales ya que estamos en presencia de una función con más de una variable. Recordemos que la derivada parcial con respecto a una variable asume que \textbf{el resto de variables permanece constante}.
+
+En nuestro caso, lo anterior implica que el producto marginal del trabajo ($PM_n$) nos indica como varia la producción cuando varía el trabajo asumiendo que el capital permanece constante.
+
+\subsection*{Maximización de Beneficio de la Empresa}
+
+Nuestro objetivo último es obtener una demanda de trabajo de parte de la empresa. Recordar que en el modelo macroeconómico básico las empresas demandan factores de producción y los hogares ofrecen los mismos a los hogares.
+
+Para los hogares esta transacción representa un ingreso y define la renta de los hogares, mientras que para la empresa es un coste. Dicho coste posee un efecto negativo sobre el beneficio de la empresa. Pero por otro lado recordemos que la empresa demanda trabajo para poder producir el único bien de la economía y venderlo en el mercado a hogares ($C$), el sector público ($G$) o el sector exterior ($X$) y así obtener un ingreso.
+
+Resumiendo, cuando la empresa adquiere una unidad de trabajo incurre en un coste que reduce su beneficio (pagar el factor trabajo) pero por otro lado recibe un ingreso producto de la venta de la mayor cantidad del bien obtenido con el factor trabajo adicional, multiplicado por el precio de mercado.
+
+Lea de nuevo el párrafo anterior, el ingreso viene dado por el \emph{incremento en la producción} consecuencia del \emph{incremento en el factor trabajo}. Lo anterior no es más que el concepto de producto marginal del trabajo ($PM_n$). Note que el $PM_n$ es un factor clave a la hora de determinar los beneficios de adquirir nuevas unidades de trabajo.
+
+A continuación resolvemos formalmente el problema de maximización de la empresa. Se asume competencia perfecta, por lo que la empresa representativa toma como dados los precios de los factores y del bien final, dado que no puede influir en los mismos.
+
+La función de beneficio de la empresa viene dada por la diferencia entre sus ingresos y costes.
+
+El ingreso viene dado por la cantidad producida multiplicada por el precio de mercado ($P \times Y = P \times F(K,N)= P \times K^\alpha N^{1-\alpha}$)
+
+El coste es sencillamente la cantidad de trabajo multiplicada por $W$ el salario de mercado ($W \times N$), más la cantidad de capital multiplicada por el precio de este ($r \times K$)
+
+A partir de los elementos anteriores escribimos la función de beneficio como:
+
+\begin{equation}\label{ben}
+    B(K,N)=PK^\alpha N^{1-\alpha}-(WN+rK)=PK^\alpha N^{1-\alpha}-WN-rK
+\end{equation}
+
+\noindent note que la función de beneficio depende de las variables en control de la empresa, a saber, el trabajo y el capital demandado.
+
+La empresa demanda trabajo y capital con el objeto de obtener el \emph{máximo} beneficio posible. En este punto es que entra una de las ventajas de emplear el cálculo diferencial. Asumiendo que la función de beneficio es continua y al menos dos veces diferenciable con respecto al capital y el trabajo, el máximo beneficio se puede determinar derivando la función de beneficio e igualando a cero.
+
+Derivamos la función de beneficio \ref{ben} con respecto al factor trabajo e igualamos a cero, para determinar hasta que punto la empresa debe variar la cantidad de trabajo para maximizar su beneficio
+
+\begin{align}\label{ben1}
+    \frac{\partial B}{\partial N}=& P\frac{\partial Y}{\partial N}-W=0 \nonumber\\
+    =& P(1-\alpha) N^{-\alpha}K^{\alpha}-W=0 \nonumber\\
+    =& P(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}-W=0 \nonumber\\
+    =& P(1-\alpha) \bigg(\frac{K}{N}\bigg)^{\alpha}-W=0 \nonumber\\
+    =& P \times PM_n=W
+\end{align}
+
+ A partir de la expresión \ref{ben1} obtenemos la ``regla'' enunciada al inicio, la empresa adquiere factor trabajo hasta un punto en el cual iguala $P \times PM_n$ al salario de mercado.
+
+La expresión del lado izquierdo de la ecuación se denomina \textbf{Valor del Producto Marginal} e indica en que medida crece el ingreso de la empresa cuando adquiere una unidad adicional de trabajo. Si la empresa contrata un trabajador adicional, la producción aumenta por definición en $PM_n$, y vende esa producción adicional en el mercado a un precio $P$. Este sería su ingreso adicional.
+
+Por otro lado, al adquirir una unidad adicional de trabajo se incurre en un coste igual al salario de mercado $W$.
+
+Asimismo podemos emplear la regla \ref{ben1} con desigualdad e inferir que hará la empresa representativa.
+
+Por ejemplo, si $ P \times PM_n>W $ el ingreso que obtiene la empresa por contratar una unidad adicional de factor trabajo $ P \times PM_n $ es mayor que su coste $ W $, por lo tanto su beneficio aumenta y es rentable contratar la unidad adicional.
+
+Si $ P \times PM_n<W $ el ingreso que obtiene la empresa por contratar una unidad adicional de factor trabajo $ P \times PM_n $ es menor que su coste $ W $, por lo tanto su beneficio disminuye y reduce el factor trabajo en una unidad.
+
+Resumiendo:
+
+\begin{center}
+\fbox{
+
+\begin{minipage}[c]{\textwidth}
+
+Si $ P \times PM_n>W $ la empresa contrata más factor trabajo
+
+Si $ P \times PM_n<W $ la empresa contrata menos factor trabajo
+
+Si $ P \times PM_n=W $ la empresa maximiza su beneficio
+
+\end{minipage}}
+
+\end{center}
+
+A partir de la expresión \ref{ben1}, si dividimos entre $P$ a ambos lados se obtiene
+
+\begin{equation}\label{ben2}
+ PM_n=\frac{W}{P}=w
+\end{equation}
+
+La expresión \ref{ben2} no es más que otra forma de expresar la condición de maximización de beneficios de la empresa. En este caso podemos afirmar que la empresa contrata factor trabajo hasta un punto en el cual se igual el $PM_n$ al salario real $ w=\frac{W}{P} $
+
+\begin{center}
+\fbox{
+
+\textbf{Pregunta:} ¿Puede explicar que significa el salario real?
+
+}
+
+\end{center}
+
+\subsection*{Demanda de Trabajo}
+
+Para finalizar, obtendremos una expresión analítica para la demanda de trabajo, asumiendo que la empresa es representada por la tecnología Cobb-Douglas definida en \ref{cb}.
+
+Partiendo de la penúltima línea de \ref{ben1}
+
+\begin{align*}\
+    P(1-\alpha) \bigg(\frac{K}{N}\bigg)^{\alpha}=& W \nonumber\\
+    (1-\alpha) \bigg(\frac{K}{N}\bigg)^{\alpha}=& \frac{W}{P} \nonumber\\
+    (1-\alpha) \bigg(\frac{K}{N}\bigg)^{\alpha}=& w
+\end{align*}
+\newpage
+\noindent despejamos $N$
+
+\begin{align}\label{ben3}
+    (1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}=& w \nonumber\\
+    (1-\alpha)K^{\alpha}=& wN^{\alpha} \nonumber\\
+    (1-\alpha)\frac{K^{\alpha}}{w}=& N^{\alpha} \nonumber\\
+    N=& \bigg((1-\alpha)\frac{K^{\alpha}}{w}\bigg)^{1/\alpha} \nonumber\\
+    N=& \bigg(\frac{(1-\alpha)}{w}\bigg)^{1/\alpha}K
+\end{align}
+
+\begin{center}
+\fbox{
+\begin{minipage}[c]{\textwidth}
+
+\textbf{OJO:} Esta expresión es solo válida para una función de producción como la enunciada en \ref{cb}. \textbf{No es una ``fórmula'' para memorizar}. En caso de cambiar la función de producción, habría que realizar todos los pasos anteriores y se obtendría una expresión distinta
+
+\end{minipage}
+}
+
+\end{center}
+
+Según \ref{ben3} la demanda de trabajo es decreciente en el salrio real $w$ y creciente en el stock de capital $K$.
+
+\begin{example}
+
+Asuma que la función de producción viene dada por $Y=K^{1/3}N^{2/3}$. Dado que es una función de producción Cobb-Douglas con rendimientos constantes a escala, podemos aplicar los resultados obtenidos arriba.
+
+La demanda de trabajo vendría dada por la igualdad entre el producto marginal del trabajo y el salario real.
+
+\begin{align}\label{ex1}
+    \frac{2}{3} K^{1/3}N^{-1/3}=& w \nonumber\\
+    \frac{2}{3} \frac{K^{1/3}}{N^{1/3}}=& w \nonumber\\
+    \frac{2}{3}K^{1/3}=& wN^{1/3} \nonumber\\
+    \frac{2}{3}\frac{K^{1/3}}{w}=& N^{1/3} \nonumber\\
+    N=& \bigg(\frac{2}{3}\frac{K^{1/3}}{w}\bigg)^\frac{1}{1/3} \nonumber\\
+    N=& \bigg(\frac{2}{3w}\bigg)^{3}K
+\end{align}
+
+
+\end{example}
+
+ \newpage
+
+\begin{example}
+En el ejemplo anterior podemos reescribir la demanda de trabajo de una manera más compacta.
+
+Definimos la producción por trabajador como:
+
+\begin{align}\label{ex2}
+    \frac{Y}{N} =& \frac{K^{1/3}N^{2/3}}{N} \nonumber\\
+    \frac{Y}{N} =& K^{1/3}N^{\frac{2}{3}-1} \nonumber\\
+    \frac{Y}{N} =& K^{1/3}N^{-1/3}
+\end{align}
+
+De la expresión \ref{ex1} sabemos que
+
+\begin{equation}\label{ben4}
+\frac{2}{3} K^{1/3}N^{-1/3}= w
+\end{equation}
+
+Combinando \ref{ben4} con \ref{ex2}
+
+\begin{equation}\label{ben5}
+\frac{2}{3} \frac{Y}{N}= w
+\end{equation}
+
+Despejando $N$ de \ref{ben5} obtenemos la demanda de trabajo
+
+\begin{equation}
+N=\frac{2}{3}\frac{Y}{w}
+\end{equation}
+
+\end{example}
+
+\begin{example}
+
+Podemos añadir una variable adicional a la función \ref{cb}. Asuma que la función de producción viene dada por $Y=AK^{\alpha}N^{1-\alpha}$. La variable $A$ resume como afecta al nivel de producción $Y$ todos aquellos factores distintos al capital y el trabajo. Se le suele denominar \emph{Productividad Total de los Factores} (PTF). En el libro de texto de Abel y Bernanke, definen las variaciones de $A$ como perturbaciones o choques de oferta. Una perturbación positiva de oferta representa un incremento de $A$ y una negativa una reducción.
+
+Obtenemos la demanda de trabajo en este caso. Al igual que antes maximizamos el beneficio de la empresa, el cual viene dado por:
+
+\begin{equation}\label{benA}
+    B(K,N)=PAK^\alpha N^{1-\alpha}-WN-rK
+\end{equation}
+
+Maximizamos \ref{benA}:
+
+\begin{align*}
+    \frac{\partial B}{\partial N}=& P\frac{\partial Y}{\partial N}-W=0 \nonumber\\
+    =& PA(1-\alpha) N^{-\alpha}K^{\alpha}-W=0 \nonumber\\
+    =& PA(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}-W=0 \nonumber\\
+    =& PA(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}=W \nonumber\\
+    =& A(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}=\frac{W}{P} \nonumber\\
+    =& A(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}=w
+\end{align*}
+
+\noindent despejamos $N$
+
+\begin{align}\label{benA1}
+    A(1-\alpha) \frac{K^{\alpha}}{N^{\alpha}}=& w \nonumber\\
+    A(1-\alpha)K^{\alpha}=& wN^{\alpha} \nonumber\\
+    A(1-\alpha)\frac{K^{\alpha}}{w}=& N^{\alpha} \nonumber\\
+    N=& \bigg(A(1-\alpha)\frac{K^{\alpha}}{w}\bigg)^{1/\alpha} \nonumber\\
+    N=& \bigg(\frac{A(1-\alpha)}{w}\bigg)^{1/\alpha}K
+\end{align}
+
+Al igual que antes, la demanda de trabajo \ref{benA1} es decreciente en el salario real y creciente en el stock de capital. La demanda de trabajo es creciente en $A$, perturbaciones o choques positivos (negativos) de oferta aumentan (disminuyen) la demanda de trabajo. Ver la explicación detallada de este resultado en el texto de Abel y Bernanke.
+
+\end{example}
+
+
+
+\end{document}

@@ -1,0 +1,287 @@
+%Preamble
+%------------------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{book}
+\usepackage{amsmath}
+\usepackage[ansinew]{inputenc}
+%\usepackage[dvipdfm,dvipsnames,usenames]{color}
+\usepackage{graphicx}
+\usepackage[spanish]{babel} %para textos en español
+\usepackage{amsthm} %Para incluir teoremas
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{titlesec}
+%\usepackage{fancybox}
+%\usepackage{lscape}
+
+%------------------------------------------------------------------------------------
+%Se cambian los márgenes
+\addtolength{\textwidth}{3cm} \addtolength{\hoffset}{-2cm}
+\addtolength{\textheight}{2.5cm} \addtolength{\voffset}{-2cm}
+%------------------------------------------------------------------------------------
+%Se cambia formato del encabezado del capítulo
+%Se necesita el paquete titlesec
+%Este comando sustituye la palabra "capítulo" por el título del mismo
+\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+%Este comando elimina la numeración
+\renewcommand{\thechapter}{}
+%------------------------------------------------------------------------------------
+
+\pagestyle{plain}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definicion}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{assumption}[theorem]{Supuesto}
+\newtheorem{xca}[theorem]{Ejercicio}
+
+\usepackage{fancyhdr} %Para colocar headings
+\DeclareGraphicsRule{.JPG}{eps}{*}{`jpeg2ps #1} %Para poder incluir gráficos en formato .jpg
+\pagestyle{fancy} %Para colocar headings
+\fancyhf{} %Para colocar headings
+\lhead{ Macroeconomía } %left Heading
+\chead{\includegraphics[width=20pt]{colcis.jpg}}
+\renewcommand{\headrulewidth}{0.4pt}
+\rhead{Prof. Kamal Romero} %Right Heading
+
+
+
+
+%------------------------------------------------------------------------------------
+\begin{document}
+
+%\begin{center}
+%%\begin{center}
+%%\includegraphics[height=20mm,width=80mm]{cisneros.jpg}
+%%\end{center}
+%\small{\textbf{Colegio Universitario Cardenal Cisneros}}\\
+%\small{Grado en Administración y Dirección de Empresas}\\
+%%\rule{12cm}{0.4pt}\\
+%\large{\bf{Macroeconomía}}\\
+%\small{Curso 15 - 16}\\
+%\small{Profesor: Kamal Romero}\\
+%%\rule{12cm}{0.4pt}\\
+%\end{center}
+%\smallskip
+
+\chapter{Tratamiento Analítico del Mercado de Trabajo}
+
+\fbox{ \fbox{
+\begin{minipage}[c]{\textwidth}
+
+\begin{center}
+   \textbf{ADVERTENCIA}
+\end{center}
+
+El presente material es un ``guión'' de las clases que han cubierto la parte analítica del mercado de trabajo, y la cual \textbf{NO va a ser evaluada en el examen}. El mismo no es bajo ninguna circunstancia material de estudio, \textbf{no sustituye los libros de texto} y solo puede ser considerado como un apoyo para entender que hay detrás del análisis gráfico de los textos que sirven de base al desarrollo del curso. El documento puede contener erratas, se agradece comunicar al autor en caso de identificar alguna.
+
+\end{minipage}}}
+
+
+\section*{Los Hogares y la Oferta de Trabajo}
+
+Asumimos que la función de utilidad que representa las preferencias de los hogares sobre consumo y ocio, viene dada por:
+
+\begin{equation}\label{u}
+U(C,l)=Ln(C)+Ln(l)
+\end{equation}
+
+Los hogares desean maximizar su utilidad (escoger su combinación preferida de consumo y ocio), sujeto a las restricciones de que el consumo no puede exceder su renta total y que debe asignar su tiempo entre trabajo y ocio.
+
+\begin{eqnarray}\label{res}
+C=wN+\pi \\ \nonumber
+1=N+l
+\end{eqnarray}
+
+\noindent donde $N$ representa las horas de trabajo que desean ofrecer los consumidores en el mercado, y $\pi$ las rentas no laborales.
+
+Sustituyendo las restricciones \ref{res} en la función de utilidad \ref{u}
+
+\begin{equation}\label{u1}
+U(C,l)=Ln(wN+\pi)+Ln(1-N)
+\end{equation}
+
+Definimos la oferta de trabajo como el número de horas que el hogar representativo desea ofrecer en el mercado, tal que su utilidad \ref{u1} sea la máxima.
+
+Siguiendo un procedimiento similar al del problema de la empresa, obtendremos la oferta de trabajo maximizando \ref{u1} (derivar con respecto a $N$ e igualar a cero) y despejando $N$.
+
+Derivamos \ref{u1} e igualamos a cero:
+
+\begin{align}\label{max1}
+    \frac{\partial U}{\partial N}=0 & \Rightarrow \frac{1}{C}w+\frac{1}{1-N}(-1)=0 \nonumber\\
+    \frac{1}{C}w+\frac{1}{1-N}(-1)=&0 \nonumber\\
+    \frac{w}{C}=&\frac{1}{1-N} \nonumber\\
+    C=&w(1-N)
+\end{align}
+
+Sustituimos \ref{max1} en la restricción del consumo en \ref{res} y despejamos $N$
+
+\begin{align}\label{n1}
+    C =& wN+\pi \nonumber\\
+    w(1-N)=& wN+\pi \nonumber\\
+    w-wN=& wN+\pi \nonumber\\
+    w-\pi=& wN+wN \nonumber\\
+    w-\pi=& 2wN \nonumber\\
+    N=& \frac{w-\pi}{2w} \nonumber\\
+    N=& \frac{1}{2}\bigg(\frac{w-\pi}{w}\bigg) \nonumber\\
+    N=& \frac{1}{2}\bigg(1-\frac{\pi}{w}\bigg)
+\end{align}
+
+La expresión \ref{n1} es la oferta de trabajo, nos indica la cantidad de horas que desea ofrecer el hogar representativo en el mercado, tal que dicha combinación trabajo-ocio es su preferida (maximiza su utilidad) dada las restricciones de renta y tiempo a las que se enfrenta.
+
+\begin{center}
+\fbox{
+\begin{minipage}[c]{\textwidth}
+
+\textbf{OJO:} Esta expresión es solo válida para una función de utilidad como la enunciada en \ref{u}. \textbf{No es una ``fórmula'' para memorizar}. En caso de cambiar la función de utilidad, habría que realizar todos los pasos anteriores y se obtendría una expresión distinta
+
+\end{minipage}
+}
+\end{center}
+
+Inspeccionando la expresión \ref{n1} se observa que a medida que aumenta la renta no salarial ($\pi$) las horas de trabajo que desea ofrecer el hogar representativo disminuye.
+
+Asimismo, ante un incremento del salario real ($w$), la cantidad de horas que desea ofrecer aumenta.
+
+
+\begin{example}
+
+La función de utilidad que hemos presentado es muy específica, podemos generalizarla del siguiente modo:
+
+\begin{equation}\label{Ug}
+U(C,l)=Ln(wN+\pi)+\gamma Ln(1-N)
+\end{equation}
+
+El parámetro $\gamma$ refleja la preferencia por el ocio de nuestro hogar representativo. Observe que la función de utilidad anterior es un caso particular de la misma, en la cual $\gamma =1$
+
+Si repetimos el procedimiento aplicado a \ref{u}, podremos obtener una función de oferta de trabajo más general. Maximizando \ref{Ug} sujeto a las restricciones \ref{res}:
+
+\begin{align}\label{maxg}
+    \frac{\partial U}{\partial N}=0 & \Rightarrow \frac{1}{C}w+\gamma\frac{1}{1-N}(-1)=0 \nonumber\\
+    \frac{1}{C}w+\gamma\frac{1}{1-N}(-1)=&0 \nonumber\\
+    \frac{w}{C}=&\gamma\frac{1}{1-N} \nonumber\\
+    C=&\frac{w(1-N)}{\gamma}
+\end{align}
+
+Sustituimos \ref{maxg} en la restricción del consumo en \ref{res} y despejamos $N$
+
+\begin{align}\label{ng}
+    C =& wN+\pi \nonumber\\
+    \frac{w(1-N)}{\gamma}=& wN+\pi \nonumber\\
+    w-wN=& \gamma(wN+\pi) \nonumber\\
+    w-\gamma\pi=& wN+\gamma wN \nonumber\\
+    w-\gamma\pi=& wN(1+\gamma) \nonumber\\
+    N=& \frac{w-\gamma\pi}{w(1+\gamma)}
+\end{align}
+
+A diferencia de \ref{n1}, no es posible determinar el efecto que un incremento del salario tiene sobre la oferta de trabajo, simplificando aún más la expresión:
+
+\begin{equation*}
+N= \frac{1}{(1+\gamma)}-\frac{\gamma\pi}{w(1+\gamma)}
+\end{equation*}
+
+No es posible determinar como responde la oferta de trabajo a cambios en el salario real, el mismo dependerá del valor de $\gamma$
+
+Lo anterior es debido a los efectos renta y sustitución que generan las variaciones del salario real. Para un análisis más detallado de esto revisar el capítulo 3 del libro de Abel y Bernanke
+
+\end{example}
+
+\subsection*{Oferta de Trabajo e Impuestos}
+
+Vamos a asumir dos tipos de impuestos, un impuesto proporcional al salario ($t$) y un impuesto de cuantía fija ($T$), veamos como cada impuesto cambia la restricción de renta del hogar.
+
+\begin{itemize}
+\item \textbf{Impuesto proporcional} $C = w(1-t)N+\pi $
+\item \textbf{Impuesto de cuantía fija} $C = wN+\pi-T $
+\end{itemize}
+
+Para analizar los efectos de la introducción de estos impuestos, debemos repetir el procedimiento de la sección anterior con las nuevas restricciones de presupuesto
+
+\subsubsection*{Impuesto de cuantía fija}
+
+Sustituimos la nueva restricción en la función de utilidad \ref{u}
+
+\begin{equation}\label{u2}
+U(C,l)=Ln(wN+\pi-T)+Ln(1-N)
+\end{equation}
+
+Al igual que antes, derivamos \ref{u2} e igualamos a cero (maximizar \ref{u2})
+
+\begin{align}\label{max2}
+    \frac{\partial U}{\partial N}=0 & \Rightarrow \frac{1}{C}w+\frac{1}{1-N}(-1)=0 \nonumber\\
+    \frac{1}{C}w+\frac{1}{1-N}(-1)=&0 \nonumber\\
+    \frac{w}{C}=&\frac{1}{1-N} \nonumber\\
+    C=&w(1-N)
+\end{align}
+
+Sustituimos \ref{max2} en la nueva restricción y despejamos $N$
+
+\begin{align}\label{n2}
+    C =& wN+\pi-T \nonumber\\
+    w(1-N)=& wN+\pi-T
+\end{align}
+
+Dividimos ambos lados de la expresión \ref{n2} entre $w$
+
+\begin{align}\label{n3}
+	1-N=& N+\frac{\pi-T}{w}  \nonumber\\
+    1-\frac{\pi-T}{w}=& N+N \nonumber\\
+    1-\frac{\pi-T}{w}=& 2N \nonumber\\
+    N=& \frac{1}{2}\bigg[1-\bigg(\frac{\pi-T}{w}\bigg)\bigg]
+\end{align}
+
+La expresión \ref{n3} nos indica la nueva oferta de trabajo con un impuesto de cuantía fija.
+
+Se observa que la oferta de trabajo reacciona en la misma dirección ante cambios del salario real y la renta no laboral. Pero, ¿como reacciona ante un aumento de $T$?
+
+Según \ref{n3}, si aumenta el impuesto de cuantía fija, aumenta la oferta de trabajo. Esto es debido a que al igual que ante un aumento de la renta no laboral la oferta de trabajo disminuye debido a un efecto renta positivo, el incremento del impuesto actúa como un efecto renta negativo que induce a incrementar la oferta de trabajo.
+
+\subsubsection*{Impuesto proporcional}
+
+Sustituimos la nueva restricción en la función de utilidad \ref{u}
+
+\begin{equation}\label{u3}
+U(C,l)=Ln[w(1-t)N+\pi]+Ln(1-N)
+\end{equation}
+
+Al igual que antes, derivamos \ref{u3} e igualamos a cero (maximizar \ref{u3})
+
+\begin{align}\label{max3}
+    \frac{\partial U}{\partial N}=0 & \Rightarrow \frac{1}{C}w(1-t)+\frac{1}{1-N}(-1)=0 \nonumber\\
+    \frac{1}{C}w(1-t)+\frac{1}{1-N}(-1)=&0 \nonumber\\
+    \frac{w(1-t)}{C}=&\frac{1}{1-N} \nonumber\\
+    C=&w(1-t)(1-N)
+\end{align}
+
+Sustituimos \ref{max3} en la nueva restricción y despejamos $N$
+
+\begin{align}\label{n4}
+    C =&  w(1-t)N+\pi \nonumber\\
+    w(1-t)(1-N)=& w(1-t)N+\pi
+\end{align}
+
+Dividimos ambos lados de la expresión \ref{n4} entre $w(1-t)$
+
+\begin{align}\label{n5}
+	1-N=& N+\frac{\pi}{w(1-t)}  \nonumber\\
+    1-\frac{\pi}{w(1-t)}=& N+N \nonumber\\
+    1-\frac{\pi}{w(1-t)}=& 2N \nonumber\\
+    N=& \frac{1}{2}\bigg[1-\bigg(\frac{\pi}{w(1-t)}\bigg)\bigg]
+\end{align}
+
+La expresión \ref{n5} nos indica la nueva oferta de trabajo con un impuesto proporcional.
+
+Se observa que la oferta de trabajo reacciona en la misma dirección ante cambios del salario real y la renta no laboral. Pero, ¿como reacciona ante un aumento de $t$?
+
+A diferencia del caso anterior, un incremento de $t$ reduce la oferta de trabajo. Si observamos bien la expresión \ref{n5}, en este caso un incremento del impuesto opera como una disminución del salario real, y por ende, posee un efecto similar.
+
+
+
+\end{document}
