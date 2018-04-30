@@ -23,3 +23,19 @@ En esta carpeta podran encontrar los shinys que uso en la asignatura, los cuales
 * Un shiny (ver [acá](https://kamecon.shinyapps.io/PubFin/)) que muestra un gráfico y una tabla con datos de finanzas públicas (gasto, ingreso y saldo fiscal), los cuales pueden ser descargados en un pdf.
 
 * otro que realiza lo mismo con datos de empleo (en revisión, aún sin subir)
+
+### Presentaciones
+
+Algunas presentaciones empleadas en clase.
+
+### Notas
+
+Notas de algunos de los tópicos tratados en clase
+
+Gran parte de las notas y presentaciones se encuentran basadas en los siguientes textos:
+
+* [Díaz-Giménez](http://mpt.javierdiazgimenez.com/)
+* [Abel y Bernnake](http://pearson.es/espa%C3%B1a/TiendaOnline/macroeconomia-4ed)
+* [Williamson](http://pearson.es/espa%C3%B1a/TiendaOnline/macroeconomia-4ed-)
+* [Jones](http://www.antonibosch.com/libro/macroeconomia)
+* [Cowen y Tabarrok](https://www.macmillanlearning.com/Catalog/product/modernprinciplesofeconomics-fourthedition-cowen)
