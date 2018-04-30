@@ -1,0 +1,685 @@
+%\documentclass[blackandwhite]{beamer}
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage[latin1]{inputenc}
+%\usepackage[spanish]{babel}
+\usepackage{eurosym}
+%\newtheorem{theorem}{Theorem}[section]
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\setbeamercolor{alerted text}{fg=blue!60!black}
+
+\setbeamerfont{frametitle}{size=\normalsize}
+
+\newcommand{\tbl}{\mbox{\hspace{0.5cm}}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usefonttheme[onlymath]{serif}  %%%get rid of helvetica in math!!!
+%%~ altgr$&shift$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[El Multiplicador Monetario] % (optional, use only with long paper titles)
+{\textcolor{red}{El Multiplicador Monetario}}
+
+%\subtitle{\ \\ {\textcolor{blue}{Work in Progress }}} %sacado de Luis
+
+\author[Kamal Romero \ --- \ C.E.S Cardenal Cisneros]{{\large Kamal Romero} \\
+%%\\ {\small {\em with the help of some friends}}
+{\small C.E.S Cardenal Cisneros } }
+
+\date{Curso 2017- 2018} \subject{Economía}
+
+%%\date{{\ \vspace{-1.5cm}} ELSNIT, October 26-27th, 2007}
+
+%%\beamertemplateshadingbackground{blue!25}{blue!0}
+%%\definecolor{beameralert}{rgb}{0.2,0.4,0.8}
+%%\definecolor{stabilo}{rgb}{1,1,0}
+%%\definecolor{stabilo}{rgb}{0,0,1}
+
+\newcommand{\tb}{\mbox{\hspace{-1.6cm}}}
+\newcommand{\tba}{\mbox{\hspace{0.2cm}}}
+\newcommand{\tbaL}{\mbox{\hspace{1.2cm}}}
+
+%Macro para hacer cuentas T 
+\newcommand\Taccount[3][1.5cm]%
+   {{\renewcommand\arraystretch{1.3}%
+    \begin{tabular}[t]{@{}p{#1}|p{#1}@{}}
+    \multicolumn{2}{@{}c@{}}{#2}\\
+    \hline
+    #3
+    \end{tabular}%
+   }}
+
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Organización}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+
+%\section{Our Goal}
+
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+
+\begin{center}
+\Taccount[3.25cm]{Banco Central}{\textbf{Activos}&\textbf{Pasivos}\\Oro y divisas&Efectivo en manos del público\\Créditos al sistema financiero&Reservas bancarias\\Bonos del estado}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+
+\begin{center}
+\Taccount[3.25cm]{Banco Central}{\textbf{Activos}&\textbf{Pasivos}\\Oro y divisas&\alert<1>{Efectivo en manos del público}\\Créditos al sistema financiero&\alert<1>{Reservas bancarias}\\Bonos del estado}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+
+\begin{center}
+\Taccount[3.25cm]{Banco Central}{\textbf{Activos}&\textbf{Pasivos}\\Oro y divisas&\alert<1>{Efectivo en manos del público}\\Créditos al sistema financiero&\alert<1>{Reservas bancarias}\\Bonos del estado}
+\end{center}
+
+Base Monetaria = Efectivo en manos del público + Efectivo en manos del sistema financiero (caja + depósitos en el banco central)
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+
+Unificamos la notación con la del libro
+\vspace{4mm}
+
+Base Monetaria = Efectivo en manos del público + Efectivo en manos del sistema financiero (caja + depósitos en el banco central)
+
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+Unificamos la notación con la del libro
+\vspace{4mm}
+
+Base Monetaria = Efectivo en manos del público + Efectivo en manos del sistema financiero (caja + depósitos en el banco central)
+\vspace{4mm}
+
+Base Monetaria = E + R
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+
+Unificamos la notación con la del libro
+\vspace{4mm}
+
+Base Monetaria = Efectivo en manos del público + Efectivo en manos del sistema financiero (caja + depósitos en el banco central)
+\vspace{4mm}
+
+Base Monetaria = E + R
+\vspace{4mm}
+
+H = E + R
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance del banco central}
+
+Recordemos la definición de oferta monetaria \textcolor{red}{M1 en nuestro caso}
+\vspace{4mm}
+
+M = E + D 
+\vspace{4mm}
+
+H = E + R
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Balance de los bancos}
+
+En el libro el balance de las bancos se presentaba así:
+
+\begin{center}
+\includegraphics<1>[height=5cm]{balance1.jpg}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance de los bancos}
+
+Nos vamos a quedar con una versión más simplificada:
+
+\begin{center}
+\includegraphics<1>[height=4.5cm]{balance2.jpg}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance de los bancos}
+
+Resumiendo:
+
+\begin{center}
+\Taccount[1.5cm]{Bancos}{\textbf{Activos}&\textbf{Pasivos}\\R&D\\P}\quad
+\Taccount[2cm]{Banco Central}{\textbf{Activos}&\textbf{Pasivos}\\$P_b$&E\\B&R}
+
+\end{center}
+
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Balance de los bancos}
+
+Resumiendo:
+
+\begin{center}
+\Taccount[1.5cm]{Bancos}{\textbf{Activos}&\textbf{Pasivos}\\R&D\\P}\quad
+\Taccount[2cm]{Banco Central}{\textbf{Activos}&\textbf{Pasivos}\\$P_b$&\textcolor{blue}{E}\\B&\textcolor{blue}{R}}
+
+\end{center}
+
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+\begin{itemize}
+\item Oferta monetaria $M=E+D$
+\item Base monetaria $H=E+R$
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Recordemos el balance de los bancos
+
+\begin{center}
+\Taccount[1.5cm]{Bancos}{\textbf{Activos}&\textbf{Pasivos}\\R&D\\P}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Recordemos el balance de los bancos
+
+\begin{center}
+\Taccount[1.5cm]{Bancos}{\textbf{Activos}&\textbf{Pasivos}\\R&D\\P}
+\end{center}
+
+La cual implica la identidad $R+P=D$
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Ahora tenemos tres expresiones
+
+\begin{itemize}
+\item Oferta monetaria $M=E+D$
+\item Base monetaria $H=E+R$
+\item Balance de los bancos $D=R+P$
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Ahora tenemos tres expresiones
+
+\begin{itemize}
+\item Oferta monetaria $M=E+\textcolor{red}{D}$
+\item Base monetaria $H=E+R$
+\item Balance de los bancos $\textcolor{red}{D}=R+P$
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Ahora tenemos tres expresiones
+
+\begin{itemize}
+\item Oferta monetaria $M=E+\textcolor{red}{D}$
+\item Base monetaria $H=E+R$
+\item Balance de los bancos $\textcolor{red}{D}=R+P$
+\end{itemize}
+
+Sustituyendo
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Sustituyendo
+
+\begin{itemize}
+\item Oferta monetaria $M=E+R+P$
+\item Base monetaria $H=E+R$
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Sustituyendo
+
+\begin{itemize}
+\item Oferta monetaria $M=\textcolor{red}{E+R}+P$
+\item Base monetaria $H=\textcolor{red}{E+R}$
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Sustituyendo
+
+\begin{itemize}
+\item Oferta monetaria $M=H+P$
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{¿Quién crea el dinero?}
+
+Sustituyendo
+
+\begin{itemize}
+\item Oferta monetaria $M=H+P$
+\end{itemize}
+
+La oferta total de dinero de la economía $(M)$ está compuesta por:
+\begin{itemize}
+\item El dinero que crea el banco central $H$
+\item El dinero que "crean" los bancos $P$ a través del crédito
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Definiciones:
+
+\begin{description}
+\item[Coeficiente de caja] Es el cociente entre las reservas y
+los saldos de los depósitos, $c = R / D$
+\item[Coeficiente de efectivo] Es el cociente entre el efectivo y los depósitos, $e = E / D$
+\end{description}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Definiciones:
+
+\begin{description}
+\item[Coeficiente de caja] Es el cociente entre las reservas y
+los saldos de los depósitos, $c = R / D$
+\item[Coeficiente de efectivo] Es el cociente entre el efectivo y los depósitos, $e = E / D$
+\end{description}
+
+A partir de lo anterior obtenemos:
+$$c=\frac{R}{D}$$
+$$e=\frac{E}{D}$$
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la base monetaria es igual a:
+$$H=E+R$$
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la base monetaria es igual a:
+$$H=E+R$$
+
+A partir de $c=\frac{R}{D}$ y $e=\frac{E}{D}$ obtenemos:
+\vspace{4mm}
+
+$R=cD$ y $E=eD$
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la base monetaria es igual a:
+$$H=\textcolor{red}{E+R}$$
+
+A partir de $c=\frac{R}{D}$ y $e=\frac{E}{D}$ obtenemos:
+\vspace{4mm}
+
+$\textcolor{red}{R}=cD$ y $\textcolor{red}{E}=eD$
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la base monetaria es igual a:
+$$H=\textcolor{red}{E+R}$$
+
+A partir de $c=\frac{R}{D}$ y $e=\frac{E}{D}$ obtenemos:
+\vspace{4mm}
+
+$\textcolor{red}{R}=cD$ y $\textcolor{red}{E}=eD$
+
+\vspace{4mm}
+
+\begin{center}
+\textbf{¡¡Sustituimos!!}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la base monetaria es igual a:
+$$H=\textcolor{red}{E+R}$$
+
+A partir de $c=\frac{R}{D}$ y $e=\frac{E}{D}$ obtenemos:
+\vspace{4mm}
+
+$\textcolor{red}{R}=cD$ y $\textcolor{red}{E}=eD$
+
+\begin{eqnarray*}
+H &=& E+R\\
+H &=& eD+cD\\
+H &=&(e+c)D
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la oferta monetaria es igual a:
+$$M=E+D$$
+
+\noindent y $E=eD$
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la oferta monetaria es igual a:
+$$M=\textcolor{red}{E}+D$$
+
+\noindent y $\textcolor{red}{E}=eD$
+
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la oferta monetaria es igual a:
+$$M=\textcolor{red}{E}+D$$
+
+\noindent y $\textcolor{red}{E}=eD$
+
+\vspace{4mm}
+
+\begin{center}
+\textbf{¡¡Sustituimos!!}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Recordemos que la oferta monetaria es igual a:
+$$M=\textcolor{red}{E}+D$$
+
+\noindent y $\textcolor{red}{E}=eD$
+
+\begin{eqnarray*}
+M &=& E+D\\
+M &=& eD+D\\
+M &=&(1+e)D
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Tenemos dos expresiones que definen la base y oferta monetaria en función de los depósitos $(D)$
+
+\begin{eqnarray*}
+H &=& (e+c)D\\
+M &=&(1+e)D
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Tenemos dos expresiones que definen la base y oferta monetaria en función de los depósitos $(D)$
+
+\begin{eqnarray*}
+H &=& (e+c)\textcolor{red}{D}\\
+M &=&(1+e)\textcolor{red}{D}
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Tenemos dos expresiones que definen la base y oferta monetaria en función de los depósitos $(D)$
+
+\begin{eqnarray*}
+H &=& (e+c)\textcolor{red}{D}\\
+M &=&(1+e)\textcolor{red}{D}
+\end{eqnarray*}
+
+\begin{center}
+\textbf{¡¡Sustituimos!!}
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Tenemos dos expresiones que definen la base y oferta monetaria en función de los depósitos $(D)$
+
+\begin{eqnarray*}
+H &=& (e+c)\textcolor{red}{D}\\
+M &=&(1+e)\textcolor{red}{D}
+\end{eqnarray*}
+
+Despejamos $D$ de la base monetaria $(H)$
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Tenemos dos expresiones que definen la base y oferta monetaria en función de los depósitos $(D)$
+
+\begin{eqnarray*}
+H &=& (e+c)\textcolor{red}{D}\\
+M &=&(1+e)\textcolor{red}{D}
+\end{eqnarray*}
+
+Despejamos $D$ de la base monetaria $(H)$
+
+\begin{eqnarray*}
+H &=& (e+c)D\\
+D &=&\frac{H}{(e+c)}
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Sustituimos
+
+$$D =\frac{H}{(e+c)}$$
+
+en 
+
+$$M =(1+e)D$$
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+Sustituimos
+
+$$D =\frac{H}{(e+c)}$$
+
+en 
+
+$$M =(1+e)D$$
+
+Obtenemos:
+
+\begin{eqnarray*}
+M &=& (1+e)D \\
+M &=& (1+e)\frac{H}{(e+c)} \\
+M &=& \frac{(1+e)}{(e+c)}H
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+   \frametitle{Multiplicador monetario}
+
+$$M = \frac{(1+e)}{(e+c)}H$$
+
+La expresión $\frac{(1+e)}{(e+c)}$  nos dice en cuanto aumenta la oferta de dinero si la base monetaria aumenta en una unidad
+
+\vspace{4mm}
+
+Se define como \textbf{multiplicador monetario}
+
+
+\end{frame}
+
+\frame{\titlepage}
+
+% All of the following is optional and typically not needed.
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+
+
+\end{document}

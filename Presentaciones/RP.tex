@@ -1,0 +1,681 @@
+%\documentclass[blackandwhite]{beamer}
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+%\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{eurosym}
+%\newtheorem{theorem}{Theorem}[section]
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+\setbeamercolor{alerted text}{fg=blue!60!black}
+
+\setbeamerfont{frametitle}{size=\normalsize}
+
+\newcommand{\tbl}{\mbox{\hspace{0.5cm}}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usefonttheme[onlymath]{serif}  %%%get rid of helvetica in math!!!
+%%~ altgr$&shift$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Restricción de Presupuesto del Sector Público] % (optional, use only with long paper titles)
+{\textcolor{red}{Restricción de Presupuesto del Sector Público}}
+
+%\subtitle{\ \\ {\textcolor{blue}{Work in Progress }}} %sacado de Luis
+
+\author[Kamal Romero \ --- \ C.E.S Cardenal Cisneros]{{\large Kamal Romero} \\
+%%\\ {\small {\em with the help of some friends}}
+{\small C.E.S Cardenal Cisneros } }
+
+\date{Curso 2017- 2018} \subject{Economía}
+
+%%\date{{\ \vspace{-1.5cm}} ELSNIT, October 26-27th, 2007}
+
+%%\beamertemplateshadingbackground{blue!25}{blue!0}
+%%\definecolor{beameralert}{rgb}{0.2,0.4,0.8}
+%%\definecolor{stabilo}{rgb}{1,1,0}
+%%\definecolor{stabilo}{rgb}{0,0,1}
+
+\newcommand{\tb}{\mbox{\hspace{-1.6cm}}}
+\newcommand{\tba}{\mbox{\hspace{0.2cm}}}
+\newcommand{\tbaL}{\mbox{\hspace{1.2cm}}}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Organización}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+
+%\section{Our Goal}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España gastaron \textbf{470.702 millones de Euros}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España gastaron \textbf{470.702 millones de Euros}
+
+\vspace{4mm}
+Esta cifra es mayor al PIB de Suecia, Bélgica, Austria o Dinamarca.
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España gastaron \textbf{470.702 millones de Euros}
+
+\vspace{4mm}
+Esta cifra es mayor al PIB de Suecia, Bélgica, Austria o Dinamarca.
+
+\vspace{4mm}
+El doble del PIB de Finlandia y casi tres veces el de Rumanía.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España recibieron ingresos para financiar dicho gasto de \textbf{415.539 millones de Euros}
+
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España recibieron ingresos para financiar dicho gasto de \textbf{415.539 millones de Euros}
+
+\vspace{4mm}
+Dado que dicha cifra no ha sido suficiente para financiar el gasto, el estado ha tenido que incurrir en un endeudamiento neto de \textbf{55.163 millones de euros}.
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+En el 2015 las administraciones públicas en España recibieron ingresos para financiar dicho gasto de \textbf{415.539 millones de Euros}
+
+\vspace{4mm}
+Dado que dicha cifra no ha sido suficiente para financiar el gasto, el estado ha tenido que incurrir en un endeudamiento neto de \textbf{55.163 millones de euros}.
+
+\vspace{4mm}
+Esta cifra es mayor al PIB de Bulgaria, Croacia o Lituania.
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Resumimos las fuentes y usos de ingresos del sector público del siguiente modo:
+
+\begin{equation*}
+    G_t+TR_t+iB_t = T_t+DEF_t
+\end{equation*}
+
+  $G_t =$ compras del estado
+   
+  $TR_t =$ transferencias
+   
+  $i =$ rendimiento nominal de la deuda pública
+   
+  $B_t =$ stock de deuda al inicio del período $t$
+  
+  $T_t =$ ingresos por impuestos
+  
+  $DEF_t =$  déficit fiscal.
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+El déficit fiscal es la diferencia entre los gastos del sector público (excluyendo las amortizaciones de deuda pública) y los ingresos impositivos.
+
+\begin{equation*}
+    DEF_t = G_t+TR_t+iB_t -T_t
+\end{equation*}
+\vspace{4mm}
+
+¿Como se financia esta diferencia?, a través de la emisión de deuda pública, lo cual es simplemente que el sector público pide prestado al resto de sectores institucionales (hogares, empresas y el sector exterior).
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+La siguiente expresión indica la evolución del stock de deuda en el tiempo:
+
+\begin{equation*}
+    B_{t+1}=B_t+DEF_t+VAF_t
+\end{equation*}
+
+$B =$ stock de deuda pública
+
+\vspace{4mm}
+$VAF_t =$ variación del saldo de los activos financieros del sector público durante el periodo $t$.
+
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Asumimos que $VAF_t=0$, despejamos $DEF_t$ de  $DEF_t=B_{t+1}-B_t$ y sustituimos en  $G_t+TR_t+iB_t = T_t+DEF_t$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+DEF_t \nonumber 
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Asumimos que $VAF_t=0$, despejamos $DEF_t$ de  $DEF_t=B_{t+1}-B_t$ y sustituimos en  $G_t+TR_t+iB_t = T_t+DEF_t$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+DEF_t \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+B_{t+1}-B_t \nonumber 
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Asumimos que $VAF_t=0$, despejamos $DEF_t$ de  $DEF_t=B_{t+1}-B_t$ y sustituimos en  $G_t+TR_t+iB_t = T_t+DEF_t$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+DEF_t \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+B_{t+1}-B_t \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+\Delta B
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+La expresión $G_t+TR_t+iB_t = T_t+\Delta B$ establece que los gastos del sector público se financian a través de impuestos o endeudamiento (variaciones de la deuda pública).
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Obtendremos algunas expresiones que relacionen el endeudamiento con varios conceptos de balance fiscal:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+\Delta B \nonumber
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Obtendremos algunas expresiones que relacionen el endeudamiento con varios conceptos de balance fiscal:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+\textcolor{red}{\Delta B} \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+\textcolor{red}{B_{t+1}-B_t} 
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Obtendremos algunas expresiones que relacionen el endeudamiento con varios conceptos de balance fiscal:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+\Delta B \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+B_{t+1}-\textcolor{red}{B_t} \nonumber \\
+  G_t+TR_t+iB_t+\textcolor{red}{B_t} &=& T_t+B_{t+1} 
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Obtendremos algunas expresiones que relacionen el endeudamiento con varios conceptos de balance fiscal:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+\Delta B \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+B_{t+1}-B_t \nonumber \\
+  G_t+TR_t+iB_t+B_t &=& \textcolor{red}{T_t}+B_{t+1} \nonumber \\
+  G_t+TR_t-\textcolor{red}{T_t}+iB_t+B_t &=& B_{t+1} 
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+Obtendremos algunas expresiones que relacionen el endeudamiento con varios conceptos de balance fiscal:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_t+TR_t+iB_t &=& T_t+\Delta B \nonumber \\
+  G_t+TR_t+iB_t &=& T_t+B_{t+1}-B_t \nonumber \\
+  G_t+TR_t+iB_t+B_t &=& T_t+B_{t+1} \nonumber \\
+  G_t+TR_t-T_t+iB_t+B_t &=& B_{t+1} \nonumber \\
+  \text{donde} & &  \nonumber \\
+  \underbrace{\underbrace{\underbrace{G_t+TR_t-T_t}_{\text{Déficit primario}}+iB_t}_{\text{Déficit total}}+B_t}_{\text{Necesidades de financiación}}&=& B_{t+1}
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Restricción de Presupuesto del Sector Público}
+
+$$ \underbrace{\underbrace{\underbrace{G_t+TR_t-T_t}_{\text{Déficit primario}}+iB_t}_{\text{Déficit total}}+B_t}_{\text{Necesidades de financiación}}= B_{t+1}$$
+
+Es importante resaltar en esta restricción, que \textbf{el Gobierno solo tiene control sobre el gasto público, las transferencias y los impuestos}.
+ \vspace{4mm}
+ 
+La nueva emisión de deuda es un resultado de la decisión conjunta de las tres variables anteriores, mientras que la deuda del periodo anterior viene dada por decisiones pasadas y el rendimiento de la deuda viene determinado por el mercado.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Ahora introducimos tiempo en el análisis
+ \vspace{4mm}
+ 
+Asumimos una economía de dos períodos
+ \vspace{4mm}
+ 
+Por lo tanto debemos escribir dos restricciones de presupuesto
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Escribimos la restricción del sector público $(G_t+TR_t-T_t+iB_t+B_t = B_{t+1})$ para dos períodos.
+\vspace{4mm}
+
+La restricción en el período 1 viene dada por:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+ G_1+TR_1-T_1+iB_1+B_1 &= B_2 \nonumber \\
+ G_1+TR_1-T_1+B_1(1+i) &= B_2 
+\end{eqnarray*}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+La restricción en el período 2 viene dada por:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  G_2+TR_2-T_2+B_2(1+i) &= B_3 \nonumber \\
+  G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+\vspace{4mm}
+
+Dado que no existe período 3 el estado no emitirá deuda, ya que nadie la compraría debido a que no recibirán el pago en el período siguiente (están todos muertos).
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & G_1+TR_1-T_1+B_1(1+i) &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & G_1+TR_1-T_1+B_1(1+i) &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+Sustituyendo $B_2$ de $t=1$ en $t=2$
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & \textcolor{red}{G_1+TR_1-T_1+B_1(1+i)} &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+\textcolor{red}{B_2}(1+i) &= 0
+\end{eqnarray*}
+
+Sustituyendo $B_2$ de $t=1$ en $t=2$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+ G_2+TR_2-T_2+\textcolor{red}{[G_1+TR_1-T_1+B_1(1+i)]}(1+i) = 0 
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & G_1+TR_1-T_1+B_1(1+i) &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+Sustituyendo $B_2$ de $t=1$ en $t=2$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+ \textcolor{red}{G_2+TR_2-T_2}+[G_1+TR_1-T_1+B_1(1+i)](1+i) = 0 \nonumber \\
+ \big[G_1+TR_1-T_1+B_1(1+i)\big](1+i) = \textcolor{red}{T_2-G_2-TR_2}
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & G_1+TR_1-T_1+B_1(1+i) &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+Sustituyendo $B_2$ de $t=1$ en $t=2$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+ G_2+TR_2-T_2+[G_1+TR_1-T_1+B_1(1+i)](1+i) = 0 \nonumber \\
+ \big[G_1+TR_1-T_1+B_1(1+i)\big]\textcolor{red}{(1+i)} = T_2-G_2-TR_2 \nonumber \\
+ G_1+TR_1-T_1+B_1(1+i) = \frac{T_2-G_2-TR_2}{\textcolor{red}{(1+i)}} 
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Resumiendo:
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+  t=1 & G_1+TR_1-T_1+B_1(1+i) &= B_2 \nonumber \\
+  t=2 & G_2+TR_2-T_2+B_2(1+i) &= 0
+\end{eqnarray*}
+
+Sustituyendo $B_2$ de $t=1$ en $t=2$
+
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+ G_2+TR_2-T_2+[G_1+TR_1-T_1+B_1(1+i)](1+i) = 0 \nonumber \\
+ \big[G_1+TR_1-T_1+B_1(1+i)\big](1+i) = T_2-G_2-TR_2 \nonumber \\
+ G_1+TR_1-\textcolor{blue}{T_1}+B_1(1+i) = \frac{T_2-\textcolor{red}{G_2-TR_2}}{(1+i)} \nonumber \\
+ G_1+TR_1+\frac{\textcolor{red}{G_2+TR_2}}{(1+i)}+B_1(1+i) = \textcolor{blue}{T_1}+\frac{T_2}{(1+i)}
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Tenemos la \textbf{restricción intertemporal del sector público}
+
+$$G_1+TR_1+\frac{G_2+TR_2}{(1+i)}+B_1(1+i) = T_1+\frac{T_2}{(1+i)}$$
+
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Tenemos la \textbf{restricción intertemporal del sector público}
+
+$$G_1+TR_1+\frac{G_2+TR_2}{(1+i)}+B_1(1+i) = T_1+\frac{T_2}{(1+i)}$$
+
+\vspace{4mm}
+A pesar de que el estado puede gastar en un período más de lo que ingresa, \textbf{el valor actual de sus gastos} (lado izquierdo) \textbf{debe ser igual al valor actual de sus ingresos} (lado derecho)
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+Tenemos la \textbf{restricción intertemporal del sector público}
+
+$$G_1+TR_1+\frac{G_2+TR_2}{(1+i)}+B_1(1+i) = T_1+\frac{T_2}{(1+i)}$$
+
+\vspace{4mm}
+
+Asimismo, indica que si el Gobierno decide incrementar el gasto o las transferencias hoy $(t=1)$ y no aumenta los impuestos hoy
+
+\vspace{4mm}
+para que se cumpla la restricción habría que aumentar los impuestos el siguiente período $(t=2)$ o disminuir los gastos.
+ 
+\vspace{4mm} 
+Es decir, la emisión de deuda no es más que un diferimiento del incremento de impuestos hacia el futuro.
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+También podemos escribir la restricción intertemporal del siguiente modo:
+
+$$G_1+TR_1-T_1 +B_1(1+i) = \frac{T_2-G_2-TR_2}{(1+i)}$$
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+También podemos escribir la restricción intertemporal del siguiente modo:
+
+\begin{eqnarray*}
+ \textcolor{blue}{\underbrace{G_1+TR_1-T_1}_{\text{Saldo fiscal período 1}}}+B_1(1+i) &=  \textcolor{red}{\underbrace{\frac{T_2-G_2-TR_2}{(1+i)}}_{\text{Saldo fiscal período 2}}}
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+También podemos escribir la restricción intertemporal del siguiente modo:
+
+\begin{eqnarray*}
+ \textcolor{blue}{\underbrace{G_1+TR_1-T_1}_{\text{Saldo fiscal período 1}}}+B_1(1+i) &=  \textcolor{red}{\underbrace{\frac{T_2-G_2-TR_2}{(1+i)}}_{\text{Saldo fiscal período 2}}}
+\end{eqnarray*}
+
+Si incurrimos en un déficit en el \textcolor{blue}{período 1} necesariamente debemos generar un superávit en el \textcolor{red}{período 2}, para poder repagar la deuda que ha financiado el déficit en el \textcolor{blue}{período 1}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Restricción Intertemporal del Sector Público}
+
+En términos generales:
+
+\begin{itemize}
+\item cualquier déficit fiscal hoy debe ser financiado con deuda
+\item dicha deuda debe pagarse en el futuro 
+\item lo cual implica que en algún momento en el futuro debe generarse un superávit fiscal
+\end{itemize}
+
+  
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Resumen}
+
+\begin{itemize}
+\item Restricción de presupuesto del sector público \\
+$$G_t+TR_t+B_t(1+i) = T_t+B_{t+1}$$ 
+\item  Restricción  intertemporal  del sector público \\
+$$G_1+TR_1+\frac{G_2+TR_2}{(1+i)}+B_1(1+i) = T_1+\frac{T_2}{(1+i)}$$
+\end{itemize} 
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Resumen}
+
+\begin{itemize}
+\item Restricción de presupuesto del sector público \\
+$$G_t+TR_t+B_t(1+i) = T_t+B_{t+1}$$ 
+\end{itemize} 
+
+Esta expresión se emplea para analizar los determinantes del endeudamiento $(B_{t+1})$ y los distintos conceptos de déficit
+
+ \vspace{4mm}
+ 
+Solo debe despejarse la deuda o el déficit y ver como responde al resto de variables
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Resumen}
+
+\begin{itemize}
+\item  Restricción  intertemporal  del sector público \\
+$$G_1+TR_1+\frac{G_2+TR_2}{(1+i)}+B_1(1+i) = T_1+\frac{T_2}{(1+i)}$$
+\end{itemize} 
+
+Esta expresión se emplea para analizar los efectos de un déficit (o superávit) hoy sobre el saldo fiscal futuro.
+
+\end{frame}
+
+
+
+
+%\begin{frame}
+%    \frametitle{Restricción Intertemporal del Sector Público}
+%
+%
+%
+%\end{frame}
+
+
+
+
+\frame{\titlepage}
+
+% All of the following is optional and typically not needed.
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+
+
+\end{document}
