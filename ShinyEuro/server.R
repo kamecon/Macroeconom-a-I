@@ -8,8 +8,20 @@
 clean_eurostat_cache()
 
 #Dato a buscar
-dat <- get_eurostat("gov_10a_main", time_format = "raw")
+#dat <- get_eurostat("gov_10a_main", time_format = "raw")
 
+dat1 <- get_eurostat("gov_10a_main", time_format = "raw")
+datdebt <- get_eurostat("gov_10dd_edpt1", time_format = "raw")
+
+dat2 <- dat1 %>%  
+  dplyr::filter(na_item %in% c("TE","TR", "B9")) %>%
+  dplyr::filter(geo %in% c("EL","DE","BE","DK","IE","IT","FR","NL","PT","AT","FI","SE","UK","BG","CZ", "PL", "RO", "HU","LT", "LV", "EE","ES", "EU27"))
+
+datdebt2 <- datdebt %>%
+  dplyr::filter(na_item=="GD") %>%
+  dplyr::filter(geo %in% c("EL","DE","BE","DK","IE","IT","FR","NL","PT","AT","FI","SE","UK","BG","CZ", "PL", "RO", "HU","LT", "LV", "EE","ES", "EU27"))
+
+dat <- bind_rows(dat2, datdebt2)
 
 
 euro_gov <- function(dat,
@@ -56,7 +68,7 @@ shinyServer(
     output$tabla <- renderTable({
       datos <- resultados()
       
-      # Seleccionamos las columnas que nos interesan (país, año y valores de la variable), agrupamos por país y calculamos las variaciones porcentuales. Finalmente nos quedamos solo con los años 2005 en adelante 
+      # Seleccionamos las columnas que nos interesan (país, año y valores de la variable), agrupamos por pa?s y calculamos las variaciones porcentuales. Finalmente nos quedamos solo con los años 2005 en adelante 
       datos %>% dplyr::select(geo, time, values) %>%
         dplyr::group_by(geo) %>%
         dplyr::mutate(var_porct = (values/lag(values) -1)*100) %>%

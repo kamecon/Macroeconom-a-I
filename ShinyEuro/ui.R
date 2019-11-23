@@ -11,7 +11,7 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
     selectizeInput(
       "variable", "Variable",
-      choices = c('Gasto Público'="TE",'Ingresos Públicos'="TR", "Balance Fiscal"="B9")
+      choices = c('Gasto Público'="TE",'Ingresos Públicos'="TR", "Balance Fiscal"="B9","Deuda/PIB"="GD")
     ),
     selectizeInput(
       "pais","País",
