@@ -8,7 +8,12 @@
 clean_eurostat_cache()
 
 #Dato a buscar
-dat <- get_eurostat("gov_10a_main", time_format = "raw")
+#dat <- get_eurostat("gov_10a_main", time_format = "raw")
+
+ datosBase <- function(fuente){
+   datos <- get_eurostat(fuente, time_format = "raw")
+   return(datos)
+ }
 
 
 
@@ -24,7 +29,7 @@ euro_gov <- function(dat,
   
   #Seleccionamos los datos que nos interesan y los ordenamos por país y año
   
-  dat %>% dplyr::filter(geo %in% c("ES", "EU27", country),
+  dat %>% dplyr::filter(geo %in% c("ES", "EU28", country),
                         unit == "PC_GDP" & sector == 'S13'& na_item == variable) %>%
     dplyr::arrange(geo, time) -> dat2
   
@@ -35,8 +40,12 @@ euro_gov <- function(dat,
 shinyServer(
   function(input, output) {
     
+     dat <- reactive({
+       datosBase(input$fuente)
+     })
+    
     resultados <- reactive({
-      euro_gov(dat,
+      euro_gov(dat(),
                input$variable,
                input$pais)
     })
@@ -47,9 +56,8 @@ shinyServer(
       datos <- resultados()
       plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo)) +
               geom_point() + geom_line() +
-              coord_cartesian(xlim=c(2005:2017)) +
               labs(x="Año", y=toString(input$variable)) +
-              scale_x_continuous(breaks = c(2005,2007,2009,2011,2013,2015,2017))
+              scale_x_continuous(limits = c(2005,2019), breaks = seq(2005,2019,2))
       plot
     })
     
