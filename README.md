@@ -21,9 +21,9 @@ En esta carpeta encontrarás (de momento):
 
 En esta carpeta podran encontrar los shinys que uso en la asignatura, los cuales acceden a eurostat y descargan datos económicos. De momento tenemos:
 
-* Un shiny (ver [acá](https://kamecon.shinyapps.io/PubFin/)) que muestra un gráfico y una tabla con datos de finanzas públicas (gasto, ingreso y saldo fiscal), los cuales pueden ser descargados en un pdf.
+* Un shiny (ver [acá](https://kamecon.shinyapps.io/gasting/)) que muestra un gráfico y una tabla con datos de finanzas públicas (gasto, ingreso y saldo fiscal), los cuales pueden ser descargados en un pdf.
 
-* otro que realiza lo mismo con datos de empleo (en revisión, aún sin subir)
+* otro que realiza lo mismo con datos de empleo (**en elaboración -oct 2019-**)
 
 ### Presentaciones
 

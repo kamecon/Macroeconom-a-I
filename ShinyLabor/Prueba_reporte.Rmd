@@ -1,0 +1,34 @@
+---
+title: "Segundo Trabajo en Grupo"
+#author: "Kamal Romero"
+date: "Macroeconomia"
+output:
+  pdf_document
+header-includes:
+- \usepackage{booktabs}
+#classoption: landscape
+#css: test.css
+---
+
+```{r, echo=FALSE}
+library(knitr)
+library(kableExtra)
+```
+
+<!-- \begin{center} -->
+<!-- \includegraphics[width=3cm, height=3cm]{logo.jpg} -->
+<!-- \end{center} -->
+
+```{r, echo=FALSE, as.is=TRUE, message=FALSE, warning=FALSE, fig.height = 5, fig.width = 8, fig.align = "center"}
+      plot <- ggplot(datos, aes(x=time,y=values, group=geo, colour=geo))
+      plot <- plot + geom_point() + geom_line()
+      plot <- plot + coord_cartesian(xlim=c(2005:2015))
+      plot <- plot + labs(x="Ano", y=toString(input$variable))+
+              scale_x_continuous(breaks = c(2005,2007,2009,2011,2013,2015,2017))
+      plot
+```
+
+
+```{r, echo=FALSE}
+kable(Tablon, format = 'latex', booktabs=T, align = rep('c', 12), digits = 1)
+```
